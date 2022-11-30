@@ -1,5 +1,5 @@
 import Default
-from MainScreen import main_menu
-main_menu()
+from MainScreen import menuScreen
+menuScreen()
 
 # Create by Vo Huu Tuan - B20DCCN622
