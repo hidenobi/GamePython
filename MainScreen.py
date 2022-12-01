@@ -4,6 +4,7 @@ from Button import Button
 import Default
 import Data
 import random
+import webbrowser
 
 CENTER_SCREEN_WIDTH = Default.SCREEN_WIDTH//2
 CENTER_SCREEN_HEIGHT = Default.SCREEN_HEIGHT//2
@@ -23,55 +24,53 @@ Default.BG_MUSIC.play(loops=-1)
 def playScreen():
 
     # init button in menu
-    BACK_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/close.png"),(60,48)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH//3, CENTER_SCREEN_HEIGHT//4),
+    BACK_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/close.png"), (60, 48)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH//3, CENTER_SCREEN_HEIGHT//4),
                          text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White")
 
     random.shuffle(RANDOM_POS_ANSWER)
 
+    # check read all list
+    if (Default.INDEX_LIST >= len(Data.LIST_DATA)):
+        winScreen()
+
+    # set background
+    Default.SCREEN.blit(pygame.transform.scale(
+        Default.BG, Default.SCREEN.get_size()), (0, 0))
+
+    # render: render the text into an image with a given color
+    MENU_TEXT = Default.get_font(64).render("Đây là gì", True, "#FFFFFF")
+    MENU_RECT = MENU_TEXT.get_rect(
+        center=(CENTER_SCREEN_WIDTH, Default.SCREEN_HEIGHT//9))
+
+    # set menu text to screen
+    Default.SCREEN.blit(MENU_TEXT, MENU_RECT)
+
+    # render score
+    SCORE_TEXT = Default.get_font(52).render(
+        "Điểm: {}".format(Default.SCORE), True, "#FFFFFF")
+    SCORE_RECT = SCORE_TEXT.get_rect(
+        center=(7*ONE_OVER_FOUR_SCREEN_WIDTH//2, Default.SCREEN_HEIGHT//9))
+    Default.SCREEN.blit(SCORE_TEXT, SCORE_RECT)
+
+    THE_QUESTION = Data.LIST_DATA[Default.INDEX_LIST]
+
+    FRAME_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/frame.png"), (610, 250)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT),
+                          text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White").update(Default.SCREEN)
+    THE_QUESTION_IMAGE = Button(image=pygame.transform.scale(pygame.image.load(THE_QUESTION[0]), (360, 240)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT),
+                                text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White").update(Default.SCREEN)
+    THE_ANSWER_1 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=RANDOM_POS_ANSWER[0],
+                          text_input=THE_QUESTION[1], font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+    THE_ANSWER_2 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=RANDOM_POS_ANSWER[1],
+                          text_input=THE_QUESTION[2], font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+    THE_ANSWER_3 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=RANDOM_POS_ANSWER[2],
+                          text_input=THE_QUESTION[3], font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+
     while True:
-
-        # check read all list
-        if (Default.INDEX_LIST >= len(Data.LIST_DATA)):
-            winScreen()
-
-        # set background
-        Default.SCREEN.blit(pygame.transform.scale(
-            Default.BG, Default.SCREEN.get_size()), (0, 0))
-
-        # render: render the text into an image with a given color
-        MENU_TEXT = Default.get_font(64).render("Đây là gì", True, "#FFFFFF")
-        MENU_RECT = MENU_TEXT.get_rect(
-            center=(CENTER_SCREEN_WIDTH, Default.SCREEN_HEIGHT//9))
-
-        # set menu text to screen
-        Default.SCREEN.blit(MENU_TEXT, MENU_RECT)
-
-        # render score
-        SCORE_TEXT = Default.get_font(52).render(
-            "Điểm: {}".format(Default.SCORE), True, "#FFFFFF")
-        SCORE_RECT = SCORE_TEXT.get_rect(
-            center=(7*ONE_OVER_FOUR_SCREEN_WIDTH//2, Default.SCREEN_HEIGHT//9))
-        Default.SCREEN.blit(SCORE_TEXT, SCORE_RECT)
-
         # get mouse position
         MENU_MOUSE_POS = pygame.mouse.get_pos()
         # set button to screen
-        for button in [BACK_BUTTON]:
-            button.changeColor(MENU_MOUSE_POS)
-            button.update(Default.SCREEN)
 
-        THE_QUESTION = Data.LIST_DATA[Default.INDEX_LIST]
-
-        THE_QUESTION_IMAGE = Button(image=pygame.transform.scale(pygame.image.load(THE_QUESTION[0]), (360, 240)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT),
-                                    text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White").update(Default.SCREEN)
-        THE_ANSWER_1 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=RANDOM_POS_ANSWER[0],
-                              text_input=THE_QUESTION[1], font=Default.get_font(36), base_color="#FFFFFF", hovering_color="Black")
-        THE_ANSWER_2 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=RANDOM_POS_ANSWER[1],
-                              text_input=THE_QUESTION[2], font=Default.get_font(36), base_color="#FFFFFF", hovering_color="Black")
-        THE_ANSWER_3 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=RANDOM_POS_ANSWER[2],
-                              text_input=THE_QUESTION[3], font=Default.get_font(36), base_color="#FFFFFF", hovering_color="Black")
-
-        for button in [THE_ANSWER_1, THE_ANSWER_2, THE_ANSWER_3]:
+        for button in [THE_ANSWER_1, THE_ANSWER_2, THE_ANSWER_3, BACK_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(Default.SCREEN)
         # check for event
@@ -112,7 +111,7 @@ def settingScreen():
                              text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White")
     MUSIC_OFF_BUTTON = Button(image=pygame.image.load("assets/img/music_off.png"), pos=(ONE_OVER_FOUR_SCREEN_WIDTH, 3*ONE_OVER_FOUR_SCREEN_HEIGHT),
                               text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White")
-    BACK_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/close.png"),(60,48)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH//3, CENTER_SCREEN_HEIGHT//4),
+    BACK_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/close.png"), (60, 48)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH//3, CENTER_SCREEN_HEIGHT//4),
                          text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White")
 
     # set background
@@ -166,15 +165,17 @@ def menuScreen():
         center=(CENTER_SCREEN_WIDTH, Default.SCREEN_HEIGHT//5))
     # init button in menu
 
-    FRAME_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/frame.png"), (380, 180)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT),
+    FRAME_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/frame.png"), (390, 200)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT),
                           text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White")
 
-    PLAY_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/Bar.png"), (190, 50)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT-50),
-                         text_input="Chơi", font=Default.get_font(42), base_color="#d7fcd4", hovering_color="Black")
-    OPTIONS_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/Bar.png"), (190, 50)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT),
-                            text_input="Cài đặt", font=Default.get_font(42), base_color="#d7fcd4", hovering_color="Black")
-    QUIT_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/Bar.png"), (190, 50)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT+50),
-                         text_input="Thoát", font=Default.get_font(42), base_color="#d7fcd4", hovering_color="Black")
+    PLAY_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/Bar.png"), (230, 50)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT-75),
+                         text_input="Chơi", font=Default.get_font(36), base_color="#d7fcd4", hovering_color="Black")
+    OPTIONS_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/Bar.png"), (230, 50)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT-25),
+                            text_input="Cài đặt", font=Default.get_font(36), base_color="#d7fcd4", hovering_color="Black")
+    ABOUT_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/Bar.png"), (230, 50)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT+25),
+                          text_input="Về chúng tôi", font=Default.get_font(36), base_color="#d7fcd4", hovering_color="Black")
+    QUIT_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/Bar.png"), (230, 50)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT+75),
+                         text_input="Thoát", font=Default.get_font(36), base_color="#d7fcd4", hovering_color="Black")
 
     # set menu text to screen
     Default.SCREEN.blit(SETTINGS_TEXT, SETTINGS_RECT)
@@ -183,7 +184,7 @@ def menuScreen():
         # get mouse position
         MENU_MOUSE_POS = pygame.mouse.get_pos()
         # set button to screen
-        for button in [FRAME_BUTTON, PLAY_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON]:
+        for button in [FRAME_BUTTON, PLAY_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON, ABOUT_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(Default.SCREEN)
 
@@ -201,6 +202,10 @@ def menuScreen():
                     print("Open options")
                     settingScreen()
                     break
+                if ABOUT_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    print("About us")
+                    aboutUs()
+                    break
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     print("Exit Game")
                     pygame.quit()
@@ -216,7 +221,7 @@ def winScreen():
         Default.BG, Default.SCREEN.get_size()), (0, 0))
 
     # render: render the text into an image with a given color
-    MENU_TEXT = Default.get_font(64).render(
+    MENU_TEXT = Default.get_font(48).render(
         "Chúc mừng bé đã hoàn thành trò chơi", True, "#FFFFFF")
     MENU_RECT = MENU_TEXT.get_rect(
         center=(CENTER_SCREEN_WIDTH, Default.SCREEN_HEIGHT//9))
@@ -232,7 +237,7 @@ def winScreen():
     Default.SCREEN.blit(SCORE_TEXT, SCORE_RECT)
 
     # init button in menu
-    BACK_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/close.png"),(60,48)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH//3, CENTER_SCREEN_HEIGHT//4),
+    BACK_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/close.png"), (60, 48)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH//3, CENTER_SCREEN_HEIGHT//4),
                          text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White")
 
     while True:
@@ -305,7 +310,7 @@ def correctScreen():
         center=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT))
     # set menu text to screen
     Default.SCREEN.blit(SETTINGS_TEXT, SETTINGS_RECT)
-    NEXT_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/next.png"),(60,48)), pos=(7*(ONE_OVER_FOUR_SCREEN_WIDTH//2), 7*(ONE_OVER_FOUR_SCREEN_HEIGHT//2)),
+    NEXT_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/next.png"), (60, 48)), pos=(7*(ONE_OVER_FOUR_SCREEN_WIDTH//2), 7*(ONE_OVER_FOUR_SCREEN_HEIGHT//2)),
                          text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White")
 
     # set sound correct
@@ -343,7 +348,7 @@ def incorrectScreen():
         center=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT))
     # set menu text to screen
     Default.SCREEN.blit(SETTINGS_TEXT, SETTINGS_RECT)
-    NEXT_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/next.png"),(60,48)), pos=(7*(ONE_OVER_FOUR_SCREEN_WIDTH//2), 7*(ONE_OVER_FOUR_SCREEN_HEIGHT//2)),
+    NEXT_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/next.png"), (60, 48)), pos=(7*(ONE_OVER_FOUR_SCREEN_WIDTH//2), 7*(ONE_OVER_FOUR_SCREEN_HEIGHT//2)),
                          text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White")
 
     # set sound correct
@@ -370,7 +375,7 @@ def incorrectScreen():
 
 def chooseTopicScreen():
     # init button in menu
-    BACK_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/close.png"),(60,48)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH//3, CENTER_SCREEN_HEIGHT//4),
+    BACK_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/close.png"), (60, 48)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH//3, CENTER_SCREEN_HEIGHT//4),
                          text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White")
 
     # render: render the text into an image with a given color
@@ -385,14 +390,14 @@ def chooseTopicScreen():
     # set menu text to screen
     Default.SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-    THE_FLOWER = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH+100, ONE_OVER_FOUR_SCREEN_HEIGHT+100),
-                        text_input="Các loại hoa", font=Default.get_font(36), base_color="#FFFFFF", hovering_color="Black")
-    THE_FRUIT = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH+100, 3*ONE_OVER_FOUR_SCREEN_HEIGHT-100),
-                       text_input="Các loại quả", font=Default.get_font(36), base_color="#FFFFFF", hovering_color="Black")
-    THE_WEATHER = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=(3*ONE_OVER_FOUR_SCREEN_WIDTH-100, ONE_OVER_FOUR_SCREEN_HEIGHT+100),
-                         text_input="Các loại thời tiết", font=Default.get_font(36), base_color="#FFFFFF", hovering_color="Black")
-    THE_SKIN = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=(3*ONE_OVER_FOUR_SCREEN_WIDTH-100, 3*ONE_OVER_FOUR_SCREEN_HEIGHT-100),
-                      text_input="Các loại quần áo", font=Default.get_font(36), base_color="#FFFFFF", hovering_color="Black")
+    THE_FLOWER = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH+100, ONE_OVER_FOUR_SCREEN_HEIGHT+100),
+                        text_input="Các loại hoa", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+    THE_FRUIT = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH+100, 3*ONE_OVER_FOUR_SCREEN_HEIGHT-100),
+                       text_input="Các loại quả", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+    THE_WEATHER = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(3*ONE_OVER_FOUR_SCREEN_WIDTH-100, ONE_OVER_FOUR_SCREEN_HEIGHT+100),
+                         text_input="Các loại thời tiết", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+    THE_SKIN = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(3*ONE_OVER_FOUR_SCREEN_WIDTH-100, 3*ONE_OVER_FOUR_SCREEN_HEIGHT-100),
+                      text_input="Các loại quần áo", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
 
     while True:
         # get mouse position
@@ -413,23 +418,33 @@ def chooseTopicScreen():
                     break
                 if THE_FLOWER.checkForInput(MENU_MOUSE_POS):
                     print("Click the flower")
-                    Data.LIST_DATA = Data.LIST_FLOWER
+                    setData(Data.LIST_FLOWER)
                     playScreen()
                     break
                 if THE_FRUIT.checkForInput(MENU_MOUSE_POS):
                     print("Click the fruit")
-                    Data.LIST_DATA = Data.LIST_FRUIT
+                    setData(Data.LIST_FRUIT)
                     playScreen()
                     break
                 if THE_SKIN.checkForInput(MENU_MOUSE_POS):
                     print("Click the skin")
-                    Data.LIST_DATA = Data.LIST_SKIN
+                    setData(Data.LIST_SKIN)
                     playScreen()
                     break
                 if THE_WEATHER.checkForInput(MENU_MOUSE_POS):
                     print("Click the weather")
-                    Data.LIST_DATA = Data.LIST_WEATHER
+                    setData(Data.LIST_WEATHER)
                     playScreen()
                     break
         pygame.display.update()
+
+
+def aboutUs():
+    webbrowser.open("https://www.facebook.com/hidenobi193/")
+
+
+def setData(data):
+    RANDOM_DATA = list(data)
+    random.shuffle(RANDOM_DATA)
+    Data.LIST_DATA = tuple(RANDOM_DATA)
 # Create by Vo Huu Tuan - B20DCCN622

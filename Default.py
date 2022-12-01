@@ -7,7 +7,7 @@ SCREEN_HEIGHT = 660
 
 # get text font and size
 def get_font(size):  # Returns Press-Start-2P in the desired size
-    return pygame.font.Font("assets/font/fontText.otf", size)
+    return pygame.font.Font("assets/font/fontText.ttf", size)
 
 pygame.init()
 default_left = False
