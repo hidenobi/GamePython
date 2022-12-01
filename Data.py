@@ -1,19 +1,81 @@
 LIST_DATA = ()
-LIST_FLOWER = (['assets/img/hoaHong.jpg', 'Hoa Hồng', 'Hoa Phượng', 'Hoa Kim Ly'],
-               ['assets/img/hoaLy.jpg', 'Hoa Ly', 'Hoa Cúc', 'Hoa Nhài'],
-               ['assets/img/hoaMai.jpg', 'Hoa Mai', 'Hoa Lan', 'Hoa Đào'],
-               ['assets/img/hoaMuoiGio.jpg', 'Hoa Mười Giờ', 'Hoa Philip', 'Hoa Phượng'])
+LIST_FAMILY = (['assets/img/anhEm.jpg', 'Anh em', 'Bố mẹ', 'Ông Bà'],
+                ['assets/img/bo.jpg', 'Bố', 'Mẹ', 'Ông'],
+                ['assets/img/boMe.jpg', 'Bố mẹ', 'Anh chị', 'Ông bà'],
+                ['assets/img/chiEm.jpg', 'Chị em', 'Anh em', 'Bố mẹ'],
+                ['assets/img/conGai.jpg', 'Con gái', 'Con trai', 'Chị em'],
+                ['assets/img/conTrai.jpg', 'Con trai', 'Con gái', 'Ông bà'],
+                ['assets/img/giaDinh.jpg', 'Gia đình', 'Bố mẹ', 'Ông bà'],
+                ['assets/img/me.jpg', 'Mẹ', 'Bố', 'Con'],
+                ['assets/img/ongBa.jpg', 'Ông bà', 'Bố mẹ', 'Cô dì'])
+
+LIST_FLOWER = (['assets/img/hoaHong.jpg', 'Hoa hồng', 'Hoa Phượng', 'Hoa Kim Ly'],
+               ['assets/img/hoaLy.jpg', 'Hoa ly', 'Hoa Cúc', 'Hoa Nhài'],
+               ['assets/img/hoaMai.jpg', 'Hoa mai', 'Hoa Lan', 'Hoa Đào'],
+               ['assets/img/hoaMuoiGio.jpg', 'Hoa mười giờ', 'Hoa Philip', 'Hoa Phượng'],
+               ['assets/img/hoaDao.jpg', 'Hoa đào', 'Hoa Hồng', 'Hoa Ly'],
+               ['assets/img/hoaDaQuy.jpg', 'Hoa dã quỳ', 'Hoa Đào', 'Hoa Mai'],
+               ['assets/img/hoaGiay.jpg', 'Hoa giấy', 'Hoa Philip', 'Hoa hồng'],
+               ['assets/img/hoaPhuong.jpg', 'Hoa phượng', 'Hoa mai', 'Hoa dã quỳ'],
+               ['assets/img/hoaSen.jpg', 'Hoa sen', 'Hoa ly', 'Hoa mười giờ'])
+
+LIST_JOBS = (['assets/img/BacSi.jpg', 'Bác sĩ', 'Y tá', 'Nha sĩ'],
+            ['assets/img/caSi.jpg', 'Ca sĩ', 'Nhạc sĩ', 'Họa sĩ'],
+            ['assets/img/CongAn.jpg', 'Công an', 'Bộ đội', ''],
+            ['assets/img/dauBep.jpg', 'Đầu bếp', 'Bác sĩ', 'Y tá'],
+            ['assets/img/GiaoVien.jpg', 'Giáo viên', 'Học sinh', 'Sinh viên'],
+            ['assets/img/hoaSi.jpg', 'Họa sĩ', 'Ca sĩ', 'Nha sĩ'],
+            ['assets/img/nhaBao.jpg', 'Nhà báo', 'Công an', 'Học sinh'],
+            ['assets/img/NhaSi.jpg', 'Nha sĩ', 'Nhà báo', 'Đầu bếp'],
+            ['assets/img/phiCong.jpg', 'Phi công', 'Phục vụ', 'Tiếp viên hàng không'],
+            ['assets/img/thoAnh.jpg', 'Thợ ảnh', 'Thợ cắt tóc', 'Thợ điện'],
+            ['assets/img/thoCatToc.jpg', 'Thợ cắt tóc', 'Giáo viên', 'Bộ đội'],
+            ['assets/img/thoDien.jpg', 'Thợ điện', 'Bác sĩ', 'Phi công'],
+            ['assets/img/ThoLamBanh.jpg', 'Thợ làm bánh', 'Họa sĩ', 'Nha sĩ'],
+            ['assets/img/thoMay.jpg', 'Thợ may', 'Thợ cắt tóc', 'Học sinh'],
+            ['assets/img/thoMoc.jpg', 'Thợ mộc', 'Đầu bếp', 'Giáo viên'],
+            ['assets/img/thoXay.jpg', 'Thợ xây', 'Phục vụ', 'Thợ mộc'],
+            ['assets/img/ThuNgan.jpg', 'Thu ngân', 'Thợ điện', 'Phi công'],
+            ['assets/img/YTa.jpg', 'Y tá', 'Giáo viên', 'Thợ mộc'])
+
 LIST_FRUIT = (['assets/img/quaBuoi.jpg', 'Quả Bưởi', 'Quả Nhãn', 'Quả Táo'],
-              ['assets/img/quaChomChom.jpg',
-               'Quả Chôm Chôm', 'Quả Na', 'Quả Xoài'],
+              ['assets/img/quaChomChom.jpg','Quả Chôm Chôm', 'Quả Na', 'Quả Xoài'],
               ['assets/img/quaKhe.jpg', 'Quả Khế', 'Quả Dưa Hấu', 'Quả Lê'],
+              ['assets/img/quaMit.jpg', 'Quả Mít', 'Quả Khế', 'Quả Chuối'],
+              ['assets/img/quaMuopDang.jpg', 'Quả mướp đắng', 'Quả Mít', 'Quả bưởi'],
+              ['assets/img/quaNa.jpg', 'Quả na', 'Quả khế', 'Quả Chuối'],
+              ['assets/img/quaNhan.jpg', 'Quả nhãn', 'Quả bưởi', 'Quả Chuối'],
+              ['assets/img/quaRoi.jpg', 'Quả roi', 'Quả cà chua', 'Quả dưa hấu'],
+              ['assets/img/quaSauRieng.jpg', 'Quả sầu riêng', 'Quả mướp đắng', 'Quả nhãn'],
+              ['assets/img/quaThanhLong.jpg', 'Quả thanh long', 'Quả chôm chôm', 'Quả táo'],
+              ['assets/img/quaVai.jpg', 'Quả vải', 'Quả thanh long', 'Quả khế'],
               ['assets/img/quaMangCut.jpg', 'Quả Măng Cụt', 'Quả Mít', 'Quả Chuối'])
+
 LIST_WEATHER = (['assets/img/May.jpg', 'Mây', 'Bão', 'Giông'],
                 ['assets/img/Mua.jpg', 'Mưa', 'Nắng', 'Cầu Vồng'],
+                ['assets/img/CauVong.jpg', 'Cầu vòng', 'Nắng', 'Mưa'],
+                ['assets/img/Lanh.jpg', 'Lạnh', 'Nóng', 'Cầu Vồng'],
+                ['assets/img/Nong.jpg', 'Nóng', 'Lạnh', 'Bão'],
                 ['assets/img/Nang.jpg', 'Nắng', 'Sương', 'Bão'],
-                ['assets/img/Samset.jpg', 'Sấm sét', 'Mưa bay', 'Nắng nhẹ'])
-LIST_SKIN = (['assets/img/Giay.jpg', 'Giày', 'Giày', 'Ủng'],
+                ['assets/img/Samset.jpg', 'Sấm sét', 'Mưa bay', 'Nắng nhẹ'],
+                ['assets/img/Gio.jpg', 'Gió', 'Nắng', 'Cầu Vồng'])
+
+LIST_SKIN = (['assets/img/Giay.jpg', 'Giày', 'Dép', 'Ủng'],
              ['assets/img/kinh.jpg', 'Kính', 'Găng Tay', 'Gương'],
-             ['assets/img/MuBaoHiem.jpg', 'Mũ Bảo Hiểm',
-              'Mũ Lưỡi Trai', 'Mũ Phớt'],
-             ['assets/img/muLen.jpg', 'Mũ Len', 'Mũ Vải', 'Mũ Cối'])
+             ['assets/img/MuBaoHiem.jpg', 'Mũ Bảo Hiểm', 'Mũ Lưỡi Trai', 'Mũ Phớt'],
+             ['assets/img/Dep.jpg', 'Dép', 'Giày', 'Ủng'],
+             ['assets/img/muLuoiTrai.jpg', 'Mũ Lưỡi Trai', 'Mũ Bảo Hiểm', 'Mũ cối'],
+             ['assets/img/muLen.jpg', 'Mũ Len', 'Mũ Vải', 'Mũ Cối'],
+             ['assets/img/nhan.jpg', 'Nhẫn', 'Lắc tay', 'Dây chuyền'],
+             ['assets/img/quanBo.jpg', 'Quần', 'Váy', 'Áo mưa'],
+             ['assets/img/Tui.jpg', 'Túi', 'Balo', 'Giày'],
+             ['assets/img/vongTay.jpg', 'Vòng tay', 'Nhẫn', 'Xích'])
+
+LIST_FURNITURES = ( ['assets/img/ban.jpg', 'Bàn', 'Đèn', 'Thảm'],
+                    ['assets/img/denBan.jpg', 'Đèn học', 'Giường', 'Cửa sổ'],
+                    ['assets/img/ghe.jpg', 'Ghế', 'Tủ', 'Bàn'],
+                    ['assets/img/giuong.jpg', 'Giường', 'Giày', 'Ghế'],
+                    ['assets/img/rem.jpg', 'Rèm cửa', 'Giường', 'Đèn học'],
+                    ['assets/img/tham.jpg', 'Thảm', 'Bàn', 'Ghế'],
+                    ['assets/img/tuQuanAo.jpg', 'Tủ quần áo', 'Giày', 'Giường'],
+                    ['assets/img/tuSach.jpg', 'Tủ sách', 'Ghế', 'Kệ tivi'])

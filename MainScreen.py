@@ -395,15 +395,18 @@ def chooseTopicScreen():
     THE_FRUIT = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH+100, 3*ONE_OVER_FOUR_SCREEN_HEIGHT-100),
                        text_input="Các loại quả", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
     THE_WEATHER = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(3*ONE_OVER_FOUR_SCREEN_WIDTH-100, ONE_OVER_FOUR_SCREEN_HEIGHT+100),
-                         text_input="Các loại thời tiết", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+                         text_input="Thời tiết", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
     THE_SKIN = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(3*ONE_OVER_FOUR_SCREEN_WIDTH-100, 3*ONE_OVER_FOUR_SCREEN_HEIGHT-100),
-                      text_input="Các loại quần áo", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
-
+                      text_input="Quần áo", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+    THE_JOBS = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH+100, CENTER_SCREEN_HEIGHT),
+                      text_input="Công việc", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+    THE_FAMILY = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(3*ONE_OVER_FOUR_SCREEN_WIDTH-100, CENTER_SCREEN_HEIGHT),
+                        text_input="Gia đình", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
     while True:
         # get mouse position
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
-        for button in [THE_FLOWER, THE_FRUIT, THE_SKIN, THE_WEATHER, BACK_BUTTON]:
+        for button in [THE_FLOWER, THE_FRUIT, THE_SKIN, THE_WEATHER, BACK_BUTTON,THE_JOBS,THE_FAMILY]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(Default.SCREEN)
         # check for event
@@ -434,6 +437,16 @@ def chooseTopicScreen():
                 if THE_WEATHER.checkForInput(MENU_MOUSE_POS):
                     print("Click the weather")
                     setData(Data.LIST_WEATHER)
+                    playScreen()
+                    break
+                if THE_JOBS.checkForInput(MENU_MOUSE_POS):
+                    print("Click the jobs")
+                    setData(Data.LIST_JOBS)
+                    playScreen()
+                    break
+                if THE_FAMILY.checkForInput(MENU_MOUSE_POS):
+                    print("Click the family")
+                    setData(Data.LIST_FAMILY)
                     playScreen()
                     break
         pygame.display.update()
