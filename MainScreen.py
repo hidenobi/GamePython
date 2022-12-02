@@ -58,12 +58,12 @@ def playScreen():
                           text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White").update(Default.SCREEN)
     THE_QUESTION_IMAGE = Button(image=pygame.transform.scale(pygame.image.load(THE_QUESTION[0]), (360, 240)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT),
                                 text_input="", font=Default.get_font(16), base_color="#d7fcd4", hovering_color="White").update(Default.SCREEN)
-    THE_ANSWER_1 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=RANDOM_POS_ANSWER[0],
-                          text_input=THE_QUESTION[1], font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
-    THE_ANSWER_2 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=RANDOM_POS_ANSWER[1],
-                          text_input=THE_QUESTION[2], font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
-    THE_ANSWER_3 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (180, 40)), pos=RANDOM_POS_ANSWER[2],
-                          text_input=THE_QUESTION[3], font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+    THE_ANSWER_1 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (200, 40)), pos=RANDOM_POS_ANSWER[0],
+                          text_input=THE_QUESTION[1], font=Default.get_font(24), base_color="#696969", hovering_color="Black")
+    THE_ANSWER_2 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (200, 40)), pos=RANDOM_POS_ANSWER[1],
+                          text_input=THE_QUESTION[2], font=Default.get_font(24), base_color="#696969", hovering_color="Black")
+    THE_ANSWER_3 = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (200, 40)), pos=RANDOM_POS_ANSWER[2],
+                          text_input=THE_QUESTION[3], font=Default.get_font(24), base_color="#696969", hovering_color="Black")
 
     while True:
         # get mouse position
@@ -173,7 +173,7 @@ def menuScreen():
     OPTIONS_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/Bar.png"), (230, 50)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT-25),
                             text_input="Cài đặt", font=Default.get_font(36), base_color="#d7fcd4", hovering_color="Black")
     ABOUT_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/Bar.png"), (230, 50)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT+25),
-                          text_input="Về chúng tôi", font=Default.get_font(36), base_color="#d7fcd4", hovering_color="Black")
+                          text_input="Giới thiệu", font=Default.get_font(36), base_color="#d7fcd4", hovering_color="Black")
     QUIT_BUTTON = Button(image=pygame.transform.scale(pygame.image.load("assets/img/Bar.png"), (230, 50)), pos=(CENTER_SCREEN_WIDTH, CENTER_SCREEN_HEIGHT+75),
                          text_input="Thoát", font=Default.get_font(36), base_color="#d7fcd4", hovering_color="Black")
 
@@ -391,17 +391,17 @@ def chooseTopicScreen():
     Default.SCREEN.blit(MENU_TEXT, MENU_RECT)
 
     THE_FLOWER = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH+100, ONE_OVER_FOUR_SCREEN_HEIGHT+100),
-                        text_input="Các loại hoa", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+                        text_input="Các loại hoa", font=Default.get_font(24), base_color="#696969", hovering_color="Black")
     THE_FRUIT = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH+100, 3*ONE_OVER_FOUR_SCREEN_HEIGHT-100),
-                       text_input="Các loại quả", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+                       text_input="Các loại quả", font=Default.get_font(24), base_color="#696969", hovering_color="Black")
     THE_WEATHER = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(3*ONE_OVER_FOUR_SCREEN_WIDTH-100, ONE_OVER_FOUR_SCREEN_HEIGHT+100),
-                         text_input="Thời tiết", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+                         text_input="Thời tiết", font=Default.get_font(24), base_color="#696969", hovering_color="Black")
     THE_SKIN = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(3*ONE_OVER_FOUR_SCREEN_WIDTH-100, 3*ONE_OVER_FOUR_SCREEN_HEIGHT-100),
-                      text_input="Quần áo", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+                      text_input="Quần áo", font=Default.get_font(24), base_color="#696969", hovering_color="Black")
     THE_JOBS = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(ONE_OVER_FOUR_SCREEN_WIDTH+100, CENTER_SCREEN_HEIGHT),
-                      text_input="Công việc", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+                      text_input="Công việc", font=Default.get_font(24), base_color="#696969", hovering_color="Black")
     THE_FAMILY = Button(image=pygame.transform.scale(pygame.image.load("assets/img/barblue.png"), (190, 40)), pos=(3*ONE_OVER_FOUR_SCREEN_WIDTH-100, CENTER_SCREEN_HEIGHT),
-                        text_input="Gia đình", font=Default.get_font(24), base_color="#FFFFFF", hovering_color="Black")
+                        text_input="Gia đình", font=Default.get_font(24), base_color="#696969", hovering_color="Black")
     while True:
         # get mouse position
         MENU_MOUSE_POS = pygame.mouse.get_pos()
@@ -453,7 +453,7 @@ def chooseTopicScreen():
 
 
 def aboutUs():
-    webbrowser.open("https://www.facebook.com/hidenobi193/")
+    webbrowser.open("https://github.com/hidenobi/GamePython/blob/main/readme.md")
 
 
 def setData(data):

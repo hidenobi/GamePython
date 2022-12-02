@@ -35,7 +35,7 @@ LIST_JOBS = (['assets/img/BacSi.jpg', 'Bác sĩ', 'Y tá', 'Nha sĩ'],
             ['assets/img/thoMay.jpg', 'Thợ may', 'Thợ cắt tóc', 'Học sinh'],
             ['assets/img/thoMoc.jpg', 'Thợ mộc', 'Đầu bếp', 'Giáo viên'],
             ['assets/img/thoXay.jpg', 'Thợ xây', 'Phục vụ', 'Thợ mộc'],
-            ['assets/img/ThuNgan.jpg', 'Thu ngân', 'Thợ điện', 'Phi công'],
+            ['assets/img/ThuNgan.webp', 'Thu ngân', 'Thợ điện', 'Phi công'],
             ['assets/img/YTa.jpg', 'Y tá', 'Giáo viên', 'Thợ mộc'])
 
 LIST_FRUIT = (['assets/img/quaBuoi.jpg', 'Quả Bưởi', 'Quả Nhãn', 'Quả Táo'],
